@@ -1,52 +1,49 @@
-import { useState } from 'react';
-import './Login.css';
-import { toast } from 'sonner';
-import { apiClient } from '../../lib/api-client';
-import { LOGIN_ROUTE } from '../../../utils/constants';
+import './LoginSignup.css';
+import user_icon from '../../assets/person.png';
 import email_icon from '../../assets/email.png';
 import password_icon from '../../assets/password.png';
-
-const Auth = () => {
+import { useState } from 'react';
+import Axios from 'axios';
+export const LoginSignup = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const validateLogin = () => {
-    if (!email.length) {
-      toast.error('Email is required.');
-      return false;
-    }
-    if (!password.length) {
-      toast.error('Password is required.');
-      return false;
-    }
-    return true;
-  };
+  const handleSignup = async (e) => {
+    e.preventDefault();
 
-  const handleLogin = async () => {
-    if (validateLogin()) {
-      const response = await apiClient.post(LOGIN_ROUTE, { email, password });
-    }
   };
 
   return (
     <div className="login-container">
       <div className="image-overlay">
         <p className="overlay-text">
-          Login today and colorize unlimited SAR images!
+          Sign Up today and colorize unlimited SAR images!
         </p>
       </div>
-      <div className="login-form">
-        <h2>Login</h2>
-        <form onSubmit={handleLogin}>
+      <div className="login-form" onSubmit={handleSignup}>
+        <h2>Sign Up</h2>
+        <form>
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <img src={user_icon} alt="" />
+            <input
+              type="text"
+              id="username"
+              className='top-1'
+              placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
             <img src={email_icon} alt="" />
             <input
               type="email"
               id="email"
-              className="top-1"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
+              className='top-1'
             />
           </div>
           <div className="form-group">
@@ -54,20 +51,18 @@ const Auth = () => {
             <img src={password_icon} alt="" />
             <input
               type="password"
+              className='top-1'
               id="password"
-              className="top-1"
-              placeholder="Password"
+              placeholder="********"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <p className="top-1">
-            Do not have an account? <a href="/auth/signup">Signup</a>
+            Already Signed up? <a href="/auth/login">Login</a>
           </p>
-          <button type="submit">Login</button>
+          <button type="submit">Sign Up</button>
         </form>
       </div>
     </div>
   );
 };
-
-export default Auth;
