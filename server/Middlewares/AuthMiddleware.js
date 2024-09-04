@@ -1,16 +1,32 @@
-import jwt from 'jsonwebtoken';
+import Joi from "joi";
 
+export const signupValidation = (req, res, next) => {
+  const schema = Joi.object({
+    name: Joi.string().min(3).required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().min(4).max(100).required(),
+  });
 
-export const verifyToken = (request, response, next) => {
-  const token = request.cookies.jwt;
-  if (!token) {
-    return response.status(401).send("You are not authenticated.");
+  const { error } = schema.validate(req.body);
+
+  if (error) {
+    return res.status(400).json({ message: "Bad Request", error });
   }
-  jwt.verify(token, process.env.JWT_KEY, (err, payload) => {
-    if(err){
-      return response.status(401).send("Token is not valid.");
-    }
-    request.userId = payload.userId;
-    next();
-  })
+
+  next();
+}
+
+export const loginValidation = (req, res, next) => { 
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(4).max(100).required(),
+  });
+
+  const { error } = schema.validate(req.body);
+
+  if (error) {
+    return res.status(400).json({ message: "Bad Request", error });
+  }
+
+  next();
 }

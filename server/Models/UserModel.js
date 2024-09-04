@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-import { genSalt, hash } from 'bcrypt';
 
 const userSchema = new mongoose.Schema(
   {
-    userName: {
+    name: {
       type: String,
       required: [true, 'Username is required.'],
     },
@@ -19,13 +18,6 @@ const userSchema = new mongoose.Schema(
   },
 );
 
-userSchema.pre('save', async function (next) {
-  const salt = await genSalt();
-  this.password = await hash(this.password, salt);
+const UserModel = mongoose.model('users', userSchema);
 
-  next();
-});
-
-const User = mongoose.model('Users', userSchema);
-
-export default User;
+export default UserModel;
