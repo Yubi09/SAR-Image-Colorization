@@ -1,5 +1,0 @@
-generator_final.pth file is used to generate the images.
-
-As we have trained the model on Google Colab the generator_final.pth and discriminator_final.pth have been downloaded from the colab environment after training.
-
-dataset_training_colab is used to quickly transfer data from drive to colab environment.
