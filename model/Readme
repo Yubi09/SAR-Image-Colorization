@@ -1,0 +1,10 @@
+generator_final.pth file is used to generate the images.
+
+As we have trained the model on Google Colab the generator_final.pth and discriminator_final.pth have been downloaded from the colab environment after training.
+generator_final.pth and discriminator_final.pth not uploaded yet due to large size exceeding 100 mb.
+
+dataset_training_colab is used to quickly transfer data from drive to colab environment.
+
+The dataset hasn't  been uploaded for its large size. s1 and s2 folders will be generated in directory "model" when data.py is executed.
+
+
