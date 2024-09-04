@@ -1,0 +1,73 @@
+
+
+const  = ({ className="" }) => {
+  return (
+    <div className={`w-[1440px] relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-center py-[60px] px-5 box-border leading-[normal] tracking-[normal] h-auto gap-0 text-center text-11xl text-pagination-colortext font-heading-heading-3 hover:bg-whitesmoke hover:flex hover:w-[1440px] hover:h-auto hover:flex-row gap-0 hover:items-start hover:justify-center hover:py-[60px] hover:px-5 hover:box-border hover:leading-[normal] hover:tracking-[normal] ${className}`}>
+      <div className="w-[496px] rounded-3xs bg-border-alternate flex flex-col items-center justify-center py-marginxl px-20 box-border gap-padding max-w-full h-auto hover:bg-border-alternate hover:flex hover:w-[496px] hover:h-auto hover:flex-col gap-padding hover:items-center hover:justify-center hover:rounded-3xs hover:py-marginxl hover:px-20 hover:box-border hover:max-w-full">
+        <div className="self-stretch flex flex-col items-center justify-center py-[19.5px] px-2 box-border gap-paddingxxl w-auto h-auto hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-col gap-paddingxxl hover:items-center hover:justify-center hover:py-[19.5px] hover:px-2 hover:box-border">
+          <a className="[text-decoration:none] relative leading-[38px] font-bold text-[inherit] flex w-auto [align-self:unset] h-auto hover:font-bold hover:font-heading-heading-3 hover:text-11xl hover:leading-[38px] hover:text-center hover:text-pagination-colortext hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto">出差申請系統</a>
+          <form className="m-0 self-stretch flex flex-col items-center justify-center gap-paddingxl w-auto h-auto hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-col gap-paddingxl hover:items-center hover:justify-center">
+            <button className="cursor-pointer border-pagination-colorprimary border-[1px] border-solid py-0 px-[71px] bg-pagination-colorprimary self-stretch rounded-button-borderradiuslg box-border flex flex-col items-center justify-center w-auto h-auto gap-button-marginxs hover:bg-pagination-colorprimary hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-col gap-button-marginxs hover:items-center hover:justify-center hover:rounded-button-borderradiuslg hover:py-0 hover:px-[71px] hover:box-border hover:border-pagination-colorprimary hover:border-[1px] hover:border-solid">
+              <div className="flex flex-row items-center justify-center py-2 px-0 box-border gap-button-marginxs w-auto [align-self:unset] h-auto hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:flex-row gap-button-marginxs hover:items-center hover:justify-center hover:py-2 hover:px-0 hover:box-border">
+                <img className="h-4 w-4 relative overflow-hidden shrink-0 flex hover:flex hover:w-4 hover:h-4" alt="" src="/icon--windowsfilled.svg" />
+                <div className="relative text-base leading-[24px] font-heading-heading-3 text-border-alternate text-left flex w-auto [align-self:unset] h-auto hover:font-heading-heading-3 hover:text-base hover:leading-[24px] hover:text-left hover:text-border-alternate hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto">Login with Microsoft</div>
+              </div>
+            </button>
+            <div className="self-stretch flex flex-row items-center justify-center gap-5 w-auto h-auto hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-row gap-5 hover:items-center hover:justify-center">
+              <div className="h-px flex-1 bg-colorfill min-w-[86] flex flex-row gap-2.5 items-center justify-center py-0 px-2.5 box-border hover:bg-colorfill hover:flex hover:flex-1 hover:h-px hover:flex-row gap-2.5 hover:items-center hover:justify-center hover:py-0 hover:px-2.5 hover:box-border hover:min-w-[86]" />
+              <div className="relative text-sm leading-[22px] font-heading-heading-3 text-pagination-colortext text-left flex min-w-[14] w-auto [align-self:unset] h-auto hover:font-heading-heading-3 hover:text-sm hover:leading-[22px] hover:text-left hover:text-pagination-colortext hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:min-w-[14]">or</div>
+              <div className="h-px flex-1 bg-colorfill min-w-[86] flex flex-row gap-2.5 items-center justify-center py-0 px-2.5 box-border hover:bg-colorfill hover:flex hover:flex-1 hover:h-px hover:flex-row gap-2.5 hover:items-center hover:justify-center hover:py-0 hover:px-2.5 hover:box-border hover:min-w-[86]" />
+            </div>
+            <div className="self-stretch flex flex-col items-center justify-center gap-padding w-auto h-auto hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-col gap-padding hover:items-center hover:justify-center">
+              <div className="self-stretch flex flex-col items-start justify-start w-auto h-auto gap-1 hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-col gap-1 hover:items-start hover:justify-start">
+                <div className="self-stretch rounded-select-borderradius bg-border-alternate border-colorfill border-[1px] border-solid box-border flex flex-row items-center justify-start py-0 px-[11px] gap-marginxxs whitespace-nowrap w-auto h-auto hover:bg-border-alternate hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-row gap-marginxxs hover:items-center hover:justify-start hover:rounded-select-borderradius hover:py-0 hover:px-[11px] hover:box-border hover:border-colorfill hover:border-[1px] hover:border-solid hover:whitespace-nowrap">
+                  <div className="h-select-controlheightlg flex-1 relative text-base leading-[24px] font-light-lg-lg-normal text-pagination-colortext text-left flex items-center hover:font-light-lg-lg-normal hover:text-base hover:leading-[24px] hover:text-left hover:text-pagination-colortext hover:flex hover:flex-1 hover:h-select-controlheightlg">Select site</div>
+                  <img className="h-[18px] w-[18px] relative overflow-hidden shrink-0 flex hover:flex hover:w-[18px] hover:h-[18px]" alt="" src="/icon--downoutlined1.svg" />
+                </div>
+              </div>
+              <div className="self-stretch rounded-input-borderradiuslg bg-border-alternate border-colorfill border-[1px] border-solid box-border overflow-hidden flex flex-row items-center justify-start py-0 px-[11px] w-auto h-auto gap-2.5 hover:bg-border-alternate hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-row gap-2.5 hover:items-center hover:justify-start hover:rounded-input-borderradiuslg hover:py-0 hover:px-[11px] hover:box-border hover:border-colorfill hover:border-[1px] hover:border-solid">
+                <div className="flex-1 flex flex-row items-center justify-start py-2 px-0 box-border gap-2.5 h-auto hover:flex hover:flex-1 hover:h-auto hover:flex-row gap-2.5 hover:items-center hover:justify-start hover:py-2 hover:px-0 hover:box-border">
+                  <img className="h-4 w-4 relative overflow-hidden shrink-0 flex hover:flex hover:w-4 hover:h-4" alt="" src="/icon--mailoutlined.svg" />
+                  <input className="w-[calc(100%_-_16px)] [border:none] [outline:none] font-heading-heading-3 text-base bg-[transparent] h-auto flex-1 relative leading-[24px] text-table-colortextdisabled text-left flex min-w-[162] p-0 hover:font-heading-heading-3 hover:text-base hover:leading-[24px] hover:text-left hover:text-table-colortextdisabled hover:flex hover:flex-1 hover:h-auto hover:min-w-[162] hover:p-0" placeholder="Email" type="text" />
+                </div>
+              </div>
+              <div className="self-stretch rounded-input-borderradiuslg bg-border-alternate border-colorfill border-[1px] border-solid box-border overflow-hidden flex flex-row items-center justify-start py-0 px-[11px] w-auto h-auto gap-2.5 hover:bg-border-alternate hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-row gap-2.5 hover:items-center hover:justify-start hover:rounded-input-borderradiuslg hover:py-0 hover:px-[11px] hover:box-border hover:border-colorfill hover:border-[1px] hover:border-solid">
+                <div className="flex-1 flex flex-row items-center justify-start py-2 px-0 box-border gap-2.5 h-auto hover:flex hover:flex-1 hover:h-auto hover:flex-row gap-2.5 hover:items-center hover:justify-start hover:py-2 hover:px-0 hover:box-border">
+                  <img className="h-4 w-4 relative overflow-hidden shrink-0 flex hover:flex hover:w-4 hover:h-4" alt="" src="/icon--lockoutlined.svg" />
+                  <input className="w-[calc(100%_-_16px)] [border:none] [outline:none] font-heading-heading-3 text-base bg-[transparent] h-auto flex-1 relative leading-[24px] text-table-colortextdisabled text-left flex min-w-[162] p-0 hover:font-heading-heading-3 hover:text-base hover:leading-[24px] hover:text-left hover:text-table-colortextdisabled hover:flex hover:flex-1 hover:h-auto hover:min-w-[162] hover:p-0" placeholder="Password" type="text" />
+                </div>
+              </div>
+              <div className="self-stretch flex flex-row items-center justify-between gap-5 w-auto h-auto hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-row gap-5 hover:items-center hover:justify-between">
+                <div className="flex flex-row items-center justify-start gap-checkbox-marginxs w-auto [align-self:unset] h-auto hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:flex-row gap-checkbox-marginxs hover:items-center hover:justify-start">
+                  <input className="m-0 h-[22px] w-4 flex flex-row gap-2 items-start justify-start py-[3px] px-0 box-border hover:flex hover:w-4 hover:h-[22px] hover:flex-row gap-2 hover:items-start hover:justify-start hover:py-[3px] hover:px-0 hover:box-border" type="checkbox" />
+                  <div className="relative text-sm leading-[22px] font-heading-heading-3 text-pagination-colortext text-left flex min-w-[96] w-auto [align-self:unset] h-auto hover:font-heading-heading-3 hover:text-sm hover:leading-[22px] hover:text-left hover:text-pagination-colortext hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:min-w-[96]">Remember me</div>
+                </div>
+                <div className="rounded-button-borderradius flex flex-col items-center justify-center py-0 px-button-paddingxs box-border w-auto [align-self:unset] h-auto gap-2 hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:flex-col gap-2 hover:items-center hover:justify-center hover:rounded-button-borderradius hover:py-0 hover:px-button-paddingxs hover:box-border">
+                  <div className="flex flex-row items-center justify-center py-[5px] px-0 box-border w-auto [align-self:unset] h-auto gap-button-marginxs hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:flex-row gap-button-marginxs hover:items-center hover:justify-center hover:py-[5px] hover:px-0 hover:box-border">
+                    <div className="relative text-sm leading-[22px] font-heading-heading-3 text-pagination-colorprimary text-left flex min-w-[115] w-auto [align-self:unset] h-auto hover:font-heading-heading-3 hover:text-sm hover:leading-[22px] hover:text-left hover:text-pagination-colorprimary hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:min-w-[115]">Forget Password?</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button className="cursor-pointer border-pagination-colorprimary border-[1px] border-solid py-0 px-5 bg-pagination-colorprimary self-stretch rounded-button-borderradiuslg box-border flex flex-col items-center justify-center w-auto h-auto gap-button-marginxs hover:bg-pagination-colorprimary hover:flex hover:self-stretch hover:w-auto hover:h-auto hover:flex-col gap-button-marginxs hover:items-center hover:justify-center hover:rounded-button-borderradiuslg hover:py-0 hover:px-5 hover:box-border hover:border-pagination-colorprimary hover:border-[1px] hover:border-solid">
+              <div className="flex flex-row items-center justify-center py-2 px-0 box-border w-auto [align-self:unset] h-auto gap-button-marginxs hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:flex-row gap-button-marginxs hover:items-center hover:justify-center hover:py-2 hover:px-0 hover:box-border">
+                <div className="relative text-base leading-[24px] font-heading-heading-3 text-border-alternate text-left flex min-w-[42] w-auto [align-self:unset] h-auto hover:font-heading-heading-3 hover:text-base hover:leading-[24px] hover:text-left hover:text-border-alternate hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:min-w-[42]">Login</div>
+              </div>
+            </button>
+          </form>
+        </div>
+        <div className="self-stretch h-px bg-colorfill flex w-auto flex-row gap-2.5 items-center justify-center py-0 px-2.5 box-border hover:bg-colorfill hover:flex hover:self-stretch hover:w-auto hover:h-px hover:flex-row gap-2.5 hover:items-center hover:justify-center hover:py-0 hover:px-2.5 hover:box-border" />
+        <div className="flex flex-col items-center justify-center gap-padding w-auto [align-self:unset] h-auto text-left text-xs text-colortextsecondary hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:flex-col gap-padding hover:items-center hover:justify-center">
+          <div className="w-[126px] flex flex-col items-center justify-center h-auto gap-2.5 hover:flex hover:w-[126px] hover:h-auto hover:flex-col gap-2.5 hover:items-center hover:justify-center">
+            <img className="self-stretch h-6 relative max-w-full overflow-hidden shrink-0 flex w-auto hover:flex hover:self-stretch hover:w-auto hover:h-6" loading="lazy" alt="" src="/vector.svg" />
+          </div>
+          <div className="flex flex-col items-center justify-center w-auto [align-self:unset] h-auto gap-0 hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:flex-col gap-0 hover:items-center hover:justify-center">
+            <div className="relative leading-[20px] flex min-w-[50] w-auto [align-self:unset] h-auto hover:font-heading-heading-3 hover:text-xs hover:leading-[20px] hover:text-left hover:text-colortextsecondary hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto hover:min-w-[50]">V 1.02.00</div>
+            <div className="relative leading-[20px] flex w-auto [align-self:unset] h-auto hover:font-heading-heading-3 hover:text-xs hover:leading-[20px] hover:text-left hover:text-colortextsecondary hover:flex hover:w-auto hover:[align-self:unset] hover:h-auto">Copyright ©2023 WISTRON Corporation. All Rights Reserved.</div>
+          </div>
+        </div>
+      </div>
+    </div>);
+};
+
+export default ;

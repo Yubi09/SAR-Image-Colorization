@@ -7,10 +7,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+server/node_modules/
+client/node_modules/
+server/web/
+*.pyc
+*.pth
+
+server/input_images/*
+server/output_images/*
 dist
 dist-ssr
 *.local
+package-lock.json
 
 # Editor directories and files
 .vscode/*

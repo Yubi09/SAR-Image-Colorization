@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import Frame from "./frame";
 
 const HomePage = () => {
-  return (
-    <div>
-      <h3>HOME PAGE HERE!!!</h3>
-    </div>
-  )
-}
+	return <Frame />;
+};
 
-export default HomePage
+export default HomePage;
