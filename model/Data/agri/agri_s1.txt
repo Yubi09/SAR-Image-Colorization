@@ -1,0 +1,1 @@
+This folder should contain the content of agri/s1 folder of Sentinel-1&2 Image Pairs (SAR & Optical) dataset which has the SAR images.
