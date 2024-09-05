@@ -1,7 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=SUSE:wght@400&display=swap'); /* Import the SUSE font */
 
+/* Small devices (phones, 600px and below) */
+@media only screen and (max-width: 600px) {
+  .login-container {
+    flex-direction: column; /* Stack the elements on top of each other */
+    justify-content: center; /* Center align the elements */
+    padding-right: 0; /* Remove extra padding */
+  }
+
+  .login-form {
+    max-width: 90%; /* Make the form smaller on mobile devices */
+    padding: 15px;
+  }
+
+  .overlay-text {
+    font-size: 32px; /* Decrease text size */
+    padding-left: 0; /* Remove padding */
+    text-align: center; /* Center the text */
+  }
+}
+/* Medium devices (tablets, 768px and below) */
+@media only screen and (max-width: 768px) {
+  .login-container {
+    flex-direction: column; /* Stack the image and form vertically */
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .login-form {
+    max-width: 80%; /* Reduce form size for tablets */
+    padding: 20px;
+  }
+
+  .overlay-text {
+    font-size: 40px; /* Adjust text size */
+    text-align: center; /* Center the text */
+  }
+}
+
+/* Large devices (desktops) */
+@media only screen and (min-width: 768px) {
+  .login-container {
+    flex-direction: row; /* Keep the image on the left and form on the right */
+    justify-content: flex-end;
+  }
+
+  .login-form {
+    max-width: 500px; /* Keep the form width larger for desktops */
+  }
+
+  .overlay-text {
+    font-size: 48px; /* Keep text size large */
+  }
+}
 .login-container {
     display: flex;
+    flex-direction: row; /* Row on larger screens, will change to column on mobile */
     justify-content: flex-end;
     align-items: center;
     height: 100vh;
@@ -37,7 +91,11 @@
   margin: 0; /* Remove default margins */
   padding-left: 10px; /* Optional: Adjust padding if needed */
   }
-  
+  @media only screen and (max-width: 600px) {
+    .overlay-text {
+      font-size: 32px; /* Reduce text size for mobile */
+    }
+  }
   .login-form {
     max-width: 500px;
     width: 100%;
@@ -47,6 +105,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1; /* Ensure the form is layered appropriately */
     position: relative; /* Ensure it's layered properly with the overlay */
+  }
+  @media only screen and (max-width: 600px) {
+    .login-form {
+      max-width: 90%; /* Form size reduced on mobile devices */
+    }
   }
   
   .login-form h2 {
