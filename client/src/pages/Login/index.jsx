@@ -4,6 +4,7 @@ import email_icon from '../../assets/email.png';
 import password_icon from '../../assets/password.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '@/utils/toast';
+import { ToastContainer } from 'react-toastify';
 
 const Auth = () => {
   const [loginInfo, setLoginInfo] = useState({
@@ -24,7 +25,7 @@ const Auth = () => {
     e.preventDefault();
     const { email, password } = loginInfo;
     if (!email || !password) {
-      return alert('All fields are required');
+      return handleError('All fields are required');
     }
     try {
       const url = 'http://localhost:8080/auth/login';
@@ -41,7 +42,7 @@ const Auth = () => {
       const { success, message, jwtToken, name, error } = result;
       if (success) {
         handleSuccess(message);
-        localStorage.setItem('jwtToken', jwtToken);
+        localStorage.setItem('token', jwtToken);
         localStorage.setItem('loggedInUser', name);
         setTimeout(() => {
           navigate('/home');
@@ -94,8 +95,11 @@ const Auth = () => {
             />
           </div>
           <button type="submit">Login</button>
-          <span>Do not have an account? <Link to={"/signup"}>Signup</Link></span>
+          <span>
+            Do not have an account? <Link to={'/signup'}>Signup</Link>
+          </span>
         </form>
+        <ToastContainer />
       </div>
     </div>
   );

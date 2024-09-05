@@ -1,64 +1,76 @@
 import {
-	Navigate,
-	BrowserRouter,
-	Route,
-	Routes,
-	useNavigationType,
-	useLocation,
-} from "react-router-dom";
+  Navigate,
+  BrowserRouter,
+  Route,
+  Routes,
+  useNavigationType,
+  useLocation,
+} from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import HomePage from './pages/Home';
+import './App.css';
+import Auth from './pages/Login';
+import { LoginSignup } from './pages/Signup';
+import { LandingPage } from './pages/landing/LandingPage';
+import { useState } from 'react';
+import RefreshHandler from './components/RefreshHandler';
 
-import HomePage from "./pages/Home";
-import "./App.css";
-import Auth from "./pages/Login";
-import { LoginSignup } from "./pages/Signup";
-import { LandingPage } from "./pages/landing/LandingPage";
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-function App() {
-	// const action = useNavigationType();
-	// const location = useLocation();
-	// const pathname = location.pathname;
+  const PrivateRoute = ({ element }) => {
+    return isAuthenticated ? element : <Navigate to="/login" />;
+  };
+  // const action = useNavigationType();
+  // const location = useLocation();
+  // const pathname = location.pathname;
 
-	// useEffect(() => {
-	// 	if (action !== "POP") {
-	// 		window.scrollTo(0, 0);
-	// 	}
-	// }, [action, pathname]);
+  // useEffect(() => {
+  // 	if (action !== "POP") {
+  // 		window.scrollTo(0, 0);
+  // 	}
+  // }, [action, pathname]);
 
-	// useEffect(() => {
-	// 	let title = "";
-	// 	let metaDescription = "";
+  // useEffect(() => {
+  // 	let title = "";
+  // 	let metaDescription = "";
 
-	// 	switch (pathname) {
-	// 		case "/":
-	// 			title = "";
-	// 			metaDescription = "";
-	// 			break;
-	// 	}
+  // 	switch (pathname) {
+  // 		case "/":
+  // 			title = "";
+  // 			metaDescription = "";
+  // 			break;
+  // 	}
 
-	// 	if (title) {
-	// 		document.title = title;
-	// 	}
+  // 	if (title) {
+  // 		document.title = title;
+  // 	}
 
-	// 	if (metaDescription) {
-	// 		const metaDescriptionTag = document.querySelector(
-	// 			'head > meta[name="description"]'
-	// 		);
-	// 		if (metaDescriptionTag) {
-	// 			metaDescriptionTag.content = metaDescription;
-	// 		}
-	// 	}
-	// }, [pathname]);
-	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Navigate to={"/login"} />} />
-				<Route path="/landing" element={<LandingPage />} />
-				<Route path="/home" element={<HomePage />} />
-				<Route path="/signup" element={<LoginSignup />} />
-				<Route path="/login" element={<Auth />} />
-			</Routes>
-		</BrowserRouter>
-	);
-}
+  // 	if (metaDescription) {
+  // 		const metaDescriptionTag = document.querySelector(
+  // 			'head > meta[name="description"]'
+  // 		);
+  // 		if (metaDescriptionTag) {
+  // 			metaDescriptionTag.content = metaDescription;
+  // 		}
+  // 	}
+  // }, [pathname]);
+
+  return (
+    <div>
+      <RefreshHandler setIsAuthenticated={setIsAuthenticated} />
+      <Routes>
+        <Route path="/" element={<Navigate to={'/home'} />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/signup" element={<LoginSignup />} />
+        <Route path="/login" element={<Auth />} />
+        <Route
+          path="/landing"
+          element={<PrivateRoute element={<LandingPage />} />}
+        />
+      </Routes>
+    </div>
+  );
+};
 
 export default App;
