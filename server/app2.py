@@ -100,10 +100,11 @@ def main() -> None:
     print("Generated image saved")
         
     try:
+        op_image_name = f"generated_{file_name}";
         # insert the image in db
-        opImg = {"fileName": f"generated_{generated_file_name}","path": inImg["path"],"mimetype": inImg["mimetype"],"size": op_img_size}
+        opImg = {"fileName": op_image_name,"path": f"output_dir\\{op_image_name}","mimetype": inImg["mimetype"],"size": op_img_size}
         collection.insert_one(opImg)
-        print("Output image added to DB")
+        print("Output image added to DB:", opImg)
 
         # update the input image
         collection.find_one_and_update({"_id": objId}, {"$set": {"opImageId": opImg["_id"]}})

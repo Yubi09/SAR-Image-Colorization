@@ -19,6 +19,7 @@ dist
 dist-ssr
 *.local
 package-lock.json
+# clear.ps1
 
 # Editor directories and files
 .vscode/*
