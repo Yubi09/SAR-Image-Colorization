@@ -2,7 +2,14 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {
+      screens: {
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      }
+    ,extend: {
       colors: {
         "text-primary": "#000",
         "border-alternate": "#fff",
@@ -105,6 +112,14 @@ module.exports = {
         "input-borderradiuslg": "8px",
         "select-borderradius": "6px",
       },
+      screens: {
+        'xsm' : '520px',
+        'ism' : '400px',
+        'xxsm' : '330px',
+      },
+      /*backgroundImage: {
+        'home-page': "url('/Frame_3.png')",
+      }*/
     },
     fontSize: {
       base: "16px",
@@ -126,4 +141,5 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
+  
 };
