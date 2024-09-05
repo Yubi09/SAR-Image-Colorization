@@ -17,7 +17,7 @@ export const LandingPage = () => {
 			formData.append("image", image);
 
 			try {
-				const response = await fetch("http://localhost:3001/upload", {
+				const response = await fetch(`http://localhost:9000/upload`, {
 					method: "POST",
 					body: formData,
 				});
@@ -108,7 +108,7 @@ export const LandingPage = () => {
 			/>
 
 			<form
-				action="http://localhost:3001/upload"
+				action="http://localhost:8000/upload"
 				method="post"
 				id="imageForm"
 				encType="multipart/form-data"
@@ -163,3 +163,4 @@ export const LandingPage = () => {
 			/>
 		</div>
 	);
+};

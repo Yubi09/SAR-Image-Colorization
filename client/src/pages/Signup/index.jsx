@@ -27,7 +27,7 @@ export const LoginSignup = () => {
 			return handleError("Passwords do not match");
 		}
 		try {
-			const url = "http://localhost:8080/auth/signup";
+			const url = `http://localhost:9000/auth/signup`;
 			const response = await fetch(url, {
 				method: "POST",
 				headers: {
