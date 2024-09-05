@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import authRoutes from './Routes/AuthRoutes.js';
 import uploadRouter from "./Routes/Upload.js";
 
+dotenv.config();
 
 
 const app = express();
