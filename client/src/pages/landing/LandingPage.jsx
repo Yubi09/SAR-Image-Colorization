@@ -1,39 +1,85 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+
+const InputStyle = () => {
+	return (
+		<div className="flex flex-col items-center justify-center pt-5 pb-6">
+			<svg
+				className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+				aria-hidden="true"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 20 16"
+			>
+				<path
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+				/>
+			</svg>
+			<p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+				<span className="font-semibold">Click to upload</span> or drag
+				and drop
+			</p>
+			<p className="text-xs text-gray-500 dark:text-gray-400">
+				SVG, PNG, JPG or GIF (MAX. 800x400px)
+			</p>
+		</div>
+	);
+};
 
 export const LandingPage = () => {
+	const fileInputRef = useRef(null);
 	const [image, setImage] = useState(null);
 	const [genImageUrl, setGenImageUrl] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const handleImageUpload = (event) => {
 		if (event.target.files) {
 			setImage(event.target.files[0]);
+			setGenImageUrl(null);
 		}
 	};
 
-	const handleSubmit = async () => {
+	const handleConvert = async () => {
 		console.log("submit was clicked");
-		if (image) {
-			const formData = new FormData();
-			formData.append("image", image);
+		if (!image) return;
 
-			try {
-				const response = await fetch(`http://localhost:9000/upload`, {
-					method: "POST",
-					body: formData,
-				});
+		setIsLoading(true);
 
-				console.log("Image received");
+		const formData = new FormData();
+		formData.append("image", image);
 
-				const blob = await response.blob();
-				const url = URL.createObjectURL(blob);
-				setGenImageUrl(url);
-			} catch (e) {
-				console.log("error:", e);
-			}
+		try {
+			const response = await fetch(`http://localhost:9000/upload`, {
+				method: "POST",
+				body: formData,
+			});
+
+			console.log("Image received");
+
+			const blob = await response.blob();
+			const url = URL.createObjectURL(blob);
+			setGenImageUrl(url);
+		} catch (e) {
+			console.log("error:", e);
+		} finally {
+			setIsLoading(false);
 		}
 	};
+
+	const handleDownload = () => {
+		const link = document.createElement("a");
+		link.href = genImageUrl;
+		link.download = "converted-image.png";
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	};
+
 	return (
-		<div className="w-full relative h-[1847px] overflow-hidden bg-[url('/frame-4@3x.png')] bg-cover bg-no-repeat bg-[top] text-left text-16xl text-border-alternate font-text-regular-normal">
+		<div className="w-full relative h-[1847px] overflow-x-auto bg-[url('/frame-4@3x.png')] bg-cover bg-no-repeat bg-[top] text-left text-16xl text-border-alternate font-text-regular-normal">
 			<div className="absolute top-[29px] left-[1284px] rounded-26xl border-border-alternate border-[3px] border-solid flex flex-row items-center justify-center py-2 px-5">
 				<button
 					className="[border:none] p-0 bg-[transparent] relative text-base leading-[150%] font-bold font-text-regular-normal text-border-alternate text-left inline-block"
@@ -72,11 +118,84 @@ export const LandingPage = () => {
 					</span>
 				</p>
 			</b>
-			<b className="absolute top-[342px] left-[81px] text-[50px] inline-block text-color-neutral-black w-[1071px] h-[63px]">
-				Here’s how you do it :
-			</b>
-			<div className="absolute top-[456px] left-[81px] rounded-31xl bg-chocolate-200 w-[1253px] h-[780px]" />
-			<b className="absolute top-[503px] left-[147px] text-[56px] inline-block text-chocolate-100 w-[993px] h-[328px]">
+			<div className="image_conversion">
+				<img
+					className="absolute top-[310px] left-[81px] rounded-31xl w-[1253px] h-[430px]"
+					alt=""
+					src="/rectangle-338.svg"
+				/>
+				<div className="absolute top-[360px] left-[81px] rounded-31xl w-[1253px] h-[421px] flex flex-col items-center justify-content">
+					<div className="w-1/2 flex flex-col items-center p-4 border-dashed border-2 border-black-300 rounded-lg">
+						{!image && (
+							<div class="flex items-center justify-center w-full">
+								<label
+									for="dropzone-file"
+									className="flex flex-col items-center justify-center h-40 w-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+								>
+									{!image && <InputStyle />}
+									<input
+										id="dropzone-file"
+										type="file"
+										ref={fileInputRef}
+										className="hidden"
+										onChange={handleImageUpload}
+									/>
+								</label>
+							</div>
+						)}
+
+						{image && (
+							<div className="mb-4 border-2 border-black flex flex-row gap-20">
+								<img
+									src={URL.createObjectURL(image)}
+									alt="selected preview"
+									className="max-w-40 h-auto border-2 border-black"
+								/>
+								{genImageUrl && (
+									<img
+										src={genImageUrl}
+										alt="Converted Preview"
+										className="max-w-40 h-auto border"
+									/>
+								)}
+							</div>
+						)}
+						<div className="image_buttons flex p-3 gap-5">
+							<button
+								onClick={() => {
+									if (fileInputRef.current) {
+										fileInputRef.current.click();
+									} else {
+										setImage(null);
+										setGenImageUrl(null);
+									}
+								}}
+								className="mt-4 px-4 py-2 text-white text-white rounded-xl bg-darkslategray w-[100px] h-[40px] disabled:opacity-50"
+							>
+								{" "}
+								{image ? "Remove" : "Upload"}
+							</button>
+							<button
+								onClick={handleConvert}
+								className="mt-4 px-4 py-2 text-white rounded-xl bg-darkslategray w-[100px] h-[40px] disabled:opacity-50"
+								disabled={!image || isLoading}
+							>
+								{isLoading ? "Converting..." : "Convert"}
+							</button>
+							{genImageUrl && (
+								<button
+									onClick={handleDownload}
+									className="mt-4 px-4 py-2 text-white text-white rounded-xl bg-darkslategray w-[110px] h-[50px]"
+								>
+									Download Image
+								</button>
+							)}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="absolute top-[790px] left-[81px] rounded-31xl bg-chocolate-200 w-[1253px] h-[780px]" />
+			<b className="absolute top-[800px] left-[147px] text-[56px] inline-block text-chocolate-100 w-[993px] h-[328px]">
 				<ol className="m-0 font-inherit text-inherit pl-[75px]">
 					<li className="mb-0">Upload the black and white image</li>
 					<li className="mb-0">Click on Submit</li>
@@ -87,79 +206,19 @@ export const LandingPage = () => {
 				<p className="m-0">&nbsp;</p>
 			</b>
 			<img
-				className="absolute top-[889px] left-[568px] w-[200px] h-[200px] overflow-hidden"
+				className="absolute top-[1050px] left-[568px] w-[200px] h-[200px] overflow-hidden"
 				alt=""
 				src="/arrow--arrow-right-lg.svg"
 			/>
 			<img
-				className="absolute top-[889px] left-[147px] w-64 h-56 object-cover"
+				className="absolute top-[1050px] left-[147px] w-64 h-56 object-cover"
 				alt=""
 				src="/rectangle-336@2x.png"
 			/>
 			<img
-				className="absolute top-[889px] left-[964px] w-64 h-56 object-cover"
+				className="absolute top-[1050px] left-[964px] w-64 h-56 object-cover"
 				alt=""
 				src="/rectangle-337@2x.png"
-			/>
-			<img
-				className="absolute top-[1287px] left-[81px] rounded-31xl w-[1253px] h-[421px]"
-				alt=""
-				src="/rectangle-338.svg"
-			/>
-
-			<form
-				action="http://localhost:8000/upload"
-				method="post"
-				id="imageForm"
-				encType="multipart/form-data"
-				onSubmit={handleSubmit}
-			>
-				<input type="file" onChange={handleImageUpload} />
-				<label htmlFor="imageInput">
-					<div className="upload_button">
-						<div className="absolute top-[1453px] left-[281px] w-[387px] h-[89px]">
-							<div className="absolute top-[0px] left-[0px] rounded-xl bg-darkslategray w-[387px] h-[89px]" />
-							<b className="absolute top-[16px] left-[82px]">
-								Upload image
-							</b>
-						</div>
-					</div>
-				</label>
-				<div className="submit_button" onClick={handleSubmit}>
-					<div className="absolute top-[1453px] left-[826px] w-[391px] h-[89px]">
-						<div className="absolute top-[0px] left-[0px] rounded-xl bg-darkslategray w-[391px] h-[89px]" />
-						<b className="absolute top-[25px] left-[138px] w-[150.1px] h-[43.9px] text-2xl text-white">
-							Submit
-						</b>
-					</div>
-				</div>
-			</form>
-
-			{genImageUrl && (
-				<div className="download_button">
-					<div className="absolute top-[1593px] left-[580px] w-[326px] h-[84px]">
-						<div className="absolute top-[0px] left-[0px] rounded-xl bg-steelblue w-[326px] h-[84px]" />
-						<b className="absolute top-[16px] left-[53px] inline-block w-[180px] h-8">
-							<a
-								href={genImageUrl}
-								download="gen_image"
-								target="_blank"
-							>
-								<button>Download</button>
-							</a>
-						</b>
-					</div>
-					<img
-						className="absolute top-[1609px] left-[826px] w-[47px] h-[47px] overflow-hidden"
-						alt=""
-						src="/interface--download.svg"
-					/>
-				</div>
-			)}
-			<img
-				className="absolute h-[3.6%] w-[5.22%] top-[72.23%] right-[45.82%] bottom-[24.18%] left-[48.96%] max-w-full overflow-hidden max-h-full"
-				alt=""
-				src="/vector.svg"
 			/>
 		</div>
 	);
