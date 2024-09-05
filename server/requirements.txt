@@ -1,6 +1,5 @@
 torch
 torchvision
 Pillow
-bson
 pymongo
 pytorch_msssim
