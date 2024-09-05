@@ -49,7 +49,7 @@ const handleImages = async function (req, res) {
             const uploadedFileID = await updateDataBase(req, res);
             const genImageName = `generated_${uploadedFileID}`;
             try {
-                await executeScript(req.body.objId).then(() => console.log("Node: Image converted successfully")).catch((e) => console.error(e));
+                await executeScript(req.body.objId).then(() => console.log("Node: Image converted successfully")).catch((e) => { throw new Error(`Execute script error: ${e}`) });
                 const gen_file = fs.readFileSync(`output_images\\${genImageName}`);
                 if (gen_file) {
                     console.log("Node: Generated file loaded");
