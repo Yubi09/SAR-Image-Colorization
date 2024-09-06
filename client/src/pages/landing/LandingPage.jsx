@@ -35,6 +35,8 @@ export const LandingPage = () => {
 	const [genImageUrl, setGenImageUrl] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 
+	const token = localStorage.getItem("token");
+
 	const handleImageUpload = (event) => {
 		if (event.target.files) {
 			setImage(event.target.files[0]);
@@ -54,6 +56,9 @@ export const LandingPage = () => {
 		try {
 			const response = await fetch(`http://localhost:9000/upload`, {
 				method: "POST",
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
 				body: formData,
 			});
 

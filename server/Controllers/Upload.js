@@ -2,8 +2,10 @@ import path from "path";
 import fs from "fs";
 
 import images from "../Models/ImageModel.js";
+import UserModel from "../Models/UserModel.js";
 import upload from "../config.js";
 import executeScript from "../execPyMod.js";
+import jwt from "jsonwebtoken";
 
 const upload_path = "input_images/";
 
@@ -12,6 +14,12 @@ export const updateDataBase = async (req, res) => {
     req.body.objId = null;
     if (file != undefined) {
         try {
+
+            const token = req.headers.authorization.split(" ").pop();
+            const inputUser = jwt.verify(token, `${process.env.JWT_SECRET}`);
+            console.log(inputUser.email);
+
+
             const newFile = new images({
                 fileName: file.originalname,
                 path: path.join(upload_path, file.filename),
@@ -26,6 +34,14 @@ export const updateDataBase = async (req, res) => {
                 })
                 .catch((err) => console.error(err));
             const path_img_input = path_file.path.split("\\")[1]
+
+            const user = await UserModel.findOneAndUpdate({ "email": inputUser.email }, {
+                $push: {
+                    listInputImg: { inputImgId: newFile._id }
+                }
+            }).then((result) => console.log("User:", result)).catch((err) => console.log("error: ", err));
+
+
             req.body.objId = newFile._id.toString();
             return path_img_input;
         } catch (err) {
@@ -39,7 +55,16 @@ export const updateDataBase = async (req, res) => {
 };
 
 
+export const middle = (req, res, next) => {
+    const token = req.headers.authorization.split(" ").pop();
+    const user = jwt.verify(token, `${process.env.JWT_SECRET}`);
+    console.log("email:", user.email);
+    req.body.email = user.email;
+    next();
+}
+
 const handleImages = async function (req, res) {
+    // console.log("request: ", req.cookies);
     upload(req, res, async (err) => {
         if (err) {
             return res.status(400).send({ message: err.message });

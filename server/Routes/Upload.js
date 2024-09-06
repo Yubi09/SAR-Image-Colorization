@@ -1,5 +1,5 @@
 import { Router } from "express";
-import handleImages from "../Controllers/Upload.js";
+import handleImages, { middle } from "../Controllers/Upload.js";
 
 const uploadRouter = Router();
 uploadRouter.post("/", handleImages);
