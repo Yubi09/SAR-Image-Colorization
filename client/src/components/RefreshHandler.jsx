@@ -1,24 +1,25 @@
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const RefreshHandler = ({ setIsAuthenticated }) => {
-  const location = useLocation();
-  const navigate = useNavigate();
+	const location = useLocation();
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setIsAuthenticated(true);
-      if (
-        location.pathname === '/login' ||
-        location.pathname === '/signup' ||
-        location.pathname === '/'
-      ) {
-        navigate('/home');
-      }
-    }
-  }, [location, navigate, setIsAuthenticated]);
+	useEffect(() => {
+		if (localStorage.getItem("token")) {
+			setIsAuthenticated(true);
+			if (
+				location.pathname === "/login" ||
+				location.pathname === "/signup"
+			) {
+				navigate("/home");
+			} else if (location.pathname === "/landing") {
+				return;
+			}
+		}
+	}, [navigate, setIsAuthenticated]);
 
-  return null;
+	return null;
 };
 
 export default RefreshHandler;
