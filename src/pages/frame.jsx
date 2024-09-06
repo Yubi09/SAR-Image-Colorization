@@ -1,6 +1,6 @@
 const Frame = () => {
   return (
-    <div className="w-full relative:xxsm:h-[300vw] relative:xsm:h-[244vw]  overflow-hidden xxsm:bg-[url('Frame_6.png')] xsm:bg-[url('Frame_3.png')] bg-cover bg-no-repeat bg-[top] flex gap-0 text-center text-base text-border-alternate font-heading-desktop-h5 hover:flex hover:w-full xsm:h-[244vw] xxsm:h-[350vh] ism:h-[400vh]">
+    <div className="w-full relative xsm:h-[244vw]  overflow-hidden xxsm:bg-[url('Frame_6.png')] xsm:bg-[url('Frame_3.png')] bg-cover bg-no-repeat bg-[top] flex gap-0 text-center text-base text-border-alternate font-heading-desktop-h5 hover:flex hover:w-full xxsm:h-[350vh] ism:h-[400vh]">
       <div className="absolute xxsm:top-[10vw] xxsm:left-[5vw] xxsm:w-[39vw] xxsm:h-[73vw] flex flex-col items-start justify-start gap-6 text-left text-37xl">
         <div className="self-stretch flex flex-col items-start justify-start xxsm:gap-3 md:gap-6">
           <h1 className="m-0 xxsm:pt-[34px] xsm:p-0 self-stretch relative xxsm:text-[30px] xsm:text-[20px] md:text-11xl lg:text-21xl xl:text-inherit leading-[120%] font-bold font-[inherit]">
@@ -49,7 +49,7 @@ const Frame = () => {
                 Revolutionize SAR Image Colorization Technology for Stunning
                 Results
               </b>
-              <div className="self-stretch relative xxsm:top-[75vh] xsm:top-[0vw] md:top-[0vw] lg:top-[58vw] xxsm:text-[12px] ism:text-[20px] xsm:text-[10px] md:text-[15px] lg:text-lg leading-[150%] xsm:text-left xxsm:text-center">
+              <div className="self-stretch relative xxsm:top-[75vh] xsm:top-[0vw] md:top-[0vw] lg:top-[58vw] xxsm:text-[12px] iism:text-[15px] ism:text-[18px] xsm:text-[10px] md:text-[15px] lg:text-lg leading-[150%] xsm:text-left xxsm:text-center">
                 Our cutting-edge SAR Image Colorization technology utilizes
                 advanced algorithms to bring vibrant colors to black and white
                 images. With our innovative solution, you can now transform your
@@ -66,10 +66,10 @@ const Frame = () => {
         src="/arrow--arrow-right-lg@2x.png"
       />
       <div className="absolute xxsm:top-[115vw] xxsm:left-[23vw] xxsm:w-[53vw] flex flex-col items-center justify-start gap-6 text-29xl xsm:text-white xxsm:text-black">
-        <b className="self-stretch relative leading-[120%] xsm:top-[0vw] xxsm:top-[110vh] xxsm:text-[20px] md:text-[40px]">
+        <b className="self-stretch relative leading-[120%] xsm:top-[0vw] xxsm:top-[110vh] ism:top-[106vh] iism:top-[90vh] xxsm:text-[20px] md:text-[40px]">
           Here’s an example
         </b>
-        <div className="self-stretch relative xsm:top-[0vw] xxsm:top-[110vh] xxsm:text-[15px] md:text-lg leading-[150%]">
+        <div className="self-stretch relative xsm:top-[0vw] ism:top-[106vh] iism:top-[90vh] xxsm:top-[110vh] xxsm:text-[15px] md:text-lg leading-[150%]">
           This is what we do
         </div>
       </div>
@@ -96,7 +96,7 @@ const Frame = () => {
       <div className="absolute xxsm:top-[280vh] ism:top-[300vh] xsm:top-[197vw] xxsm:left-[5vw] xxsm:w-[91vw] xxsm:h-[15vw] md:h-[22vw] flex xxsm:flex-col xsm:flex-row items-start justify-center xxsm:gap-6 xsm:gap-12 text-left text-text-primary xxsm:pt-0 xsm:pt-2 sm:pt-6">
         <div className="flex-1 flex flex-col items-start justify-start xxsm:gap-3 md:gap-6">
           <img
-            className="xxsm:w-8 lg:w-12 relative xxsm:h-8 lg:h-12 overflow-hidden shrink-0"
+            className="xxsm:w-6 sm:h-9 ism:w-8 lg:w-12 relative ism:h-8 lg:h-12 overflow-hidden shrink-0"
             alt=""
             src="/bullet.svg"
           />
@@ -114,7 +114,7 @@ const Frame = () => {
         </div>
         <div className="flex-1 flex flex-col items-start justify-start xxsm:gap-3 md:gap-6">
           <img
-            className="xxsm:w-8 lg:w-12 relative xxsm:h-8 lg:h-12 overflow-hidden shrink-0"
+            className="xxsm:w-6 sm:h-9 ism:w-8 lg:w-12 relative ism:h-8 lg:h-12 overflow-hidden shrink-0"
             alt=""
             src="/bullet.svg"
           />
@@ -133,7 +133,7 @@ const Frame = () => {
         </div>
         <div className="flex-1 flex flex-col items-start justify-start xxsm:gap-3 md:gap-6">
           <img
-            className="xxsm:w-8 lg:w-12 relative xxsm:h-8 lg:h-12 overflow-hidden shrink-0"
+            className="xxsm:w-6 sm:h-9 ism:w-8 lg:w-12 relative ism:h-8 lg:h-12 overflow-hidden shrink-0"
             alt=""
             src="/bullet.svg"
           />

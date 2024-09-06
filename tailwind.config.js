@@ -114,6 +114,7 @@ module.exports = {
       },
       screens: {
         'xsm' : '520px',
+        'iism' : '440px',
         'ism' : '400px',
         'xxsm' : '330px',
       },

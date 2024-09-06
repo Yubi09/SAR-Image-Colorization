@@ -13,4 +13,5 @@ body {
 ::before,
 ::after {
   border-width: 0;
+  font-family: 'SUSE';
 }
