@@ -54,9 +54,14 @@ const Frame = () => {
         </div>
       </div>
       {loggedInUser ? (
-        <div className="absolute top-[25px] left-[86vw] rounded-26xl border-border-alternate border-[3px] border-solid flex flex-row items-center justify-center py-2 px-5">
-          Hello {loggedInUser.split(' ')[0]}!!
-        </div>
+        <>
+          <Link
+            className="absolute top-[25px] left-[86vw] rounded-26xl border-border-alternate border-[3px] border-solid flex flex-row items-center justify-center py-2 px-5 text-white no-underline"
+            to="/dashboard"
+          >
+            Hello {loggedInUser.split(' ')[0]}!!
+          </Link>
+        </>
       ) : (
         <div>
           <div className="absolute top-[25px] left-[86vw] rounded-26xl border-border-alternate border-[3px] border-solid flex flex-row items-center justify-center py-2 px-5">

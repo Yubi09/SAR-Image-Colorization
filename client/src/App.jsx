@@ -14,6 +14,7 @@ import { LoginSignup } from './pages/Signup';
 import { LandingPage } from './pages/landing/LandingPage';
 import { useState } from 'react';
 import RefreshHandler from './components/RefreshHandler';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -60,13 +61,17 @@ const App = () => {
     <div>
       <RefreshHandler setIsAuthenticated={setIsAuthenticated} />
       <Routes>
-        <Route path="/" element={<Navigate to={'/home'} />} />
+        <Route path="*" element={<Navigate to={'/home'} />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/signup" element={<LoginSignup />} />
         <Route path="/login" element={<Auth />} />
         <Route
           path="/landing"
           element={<PrivateRoute element={<LandingPage />} />}
+        />
+        <Route
+          path="/dashboard"
+          element={<PrivateRoute element={<Dashboard />} />}
         />
       </Routes>
     </div>
