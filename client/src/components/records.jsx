@@ -1,14 +1,7 @@
-import { useEffect } from "react";
-
 const Records = ({ date, input_image, output_image }) => {
-	useEffect(() => {
-		return () => {
-			URL.revokeObjectURL(input_image);
-			URL.revokeObjectURL(output_image);
-		};
-	}, [input_image, output_image]);
+	console.log(input_image);
 	return (
-		<div className="max-w-5xl rounded-lg shadow-lg overflow-hidden bg-purple-400">
+		<div className="max-w-5xl mb-6 rounded-lg shadow-lg overflow-hidden bg-purple-400">
 			<div className="p-6 bg-indigo-100">
 				<h2 className="text-2xl font-bold text-gray-800 mb-2">
 					Date: {date.toString().slice(0, 10)}

@@ -36,6 +36,7 @@ const Dashboard = () => {
 				)
 					.then((result) => result.json())
 					.then((data) => data.imagePairs);
+				console.log("images", fetch_images);
 				setImages(fetch_images);
 			} catch (err) {
 				console.log("Error: ", err);

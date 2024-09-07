@@ -58,11 +58,7 @@ export const LandingPage = () => {
 			const response = await fetch(`http://localhost:9000/upload`, {
 				method: "POST",
 				headers: {
-<<<<<<< HEAD
-					Authorization: `Bearer ${token}`,
-=======
 					auth: `bearer ${token}`,
->>>>>>> dev
 				},
 				body: formData,
 			});
