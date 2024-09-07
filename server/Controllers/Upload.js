@@ -5,7 +5,6 @@ import images from "../Models/ImageModel.js";
 import UserModel from "../Models/UserModel.js";
 import upload from "../config.js";
 import executeScript from "../execPyMod.js";
-import UserModel from "../Models/UserModel.js";
 
 import jwt from "jsonwebtoken";
 

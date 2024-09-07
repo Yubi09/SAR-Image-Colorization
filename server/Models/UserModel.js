@@ -15,15 +15,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Password is required.'],
     },
-<<<<<<< HEAD
-    listInputImg: [
-      {
-        inputImgId: {
-=======
     inputImages: [
       {
         inImgId: {
->>>>>>> dev
           type: mongoose.Schema.Types.ObjectId,
           ref: "images"
         }
