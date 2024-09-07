@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import email_icon from "../../assets/email.png";
 import password_icon from "../../assets/password.png";
-import { handleError, handleSuccess } from "@/utils/toast";
+import { handleError, handleSuccess } from '../../utils/toast';
 
 import "./Login.css";
 
