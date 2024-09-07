@@ -113,6 +113,7 @@ module.exports = {
         'select-borderradius': '6px',
       },
       screens: {
+        imd: '820px',
         xsm: '520px',
         iism: '440px',
         ism: '400px',
