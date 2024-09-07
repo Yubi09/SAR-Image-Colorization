@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import Frame from "./pages/frame";
 import { LandingPage } from "./pages/LandingPage";
+import { LoginSignup } from "./components/LoginSignup/LoginSignup";
+import { Login } from "./components/LoginSignup/Login";
 
 function App() {
   const action = useNavigationType();
@@ -48,6 +50,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Frame />} />
       <Route path="/landing" element={<LandingPage />} />
+      <Route path="/signup" element={<LoginSignup/>}></Route>
+      <Route path="/login" element={<Login/>}></Route>
     </Routes>
   );
 }
