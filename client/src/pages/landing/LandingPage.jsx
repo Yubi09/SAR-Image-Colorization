@@ -47,6 +47,7 @@ export const LandingPage = () => {
 	const handleConvert = async () => {
 		console.log("submit was clicked");
 		if (!image) return;
+		const token = localStorage.getItem("token");
 
 		setIsLoading(true);
 
@@ -57,10 +58,15 @@ export const LandingPage = () => {
 			const response = await fetch(`http://localhost:9000/upload`, {
 				method: "POST",
 				headers: {
+<<<<<<< HEAD
 					Authorization: `Bearer ${token}`,
+=======
+					auth: `bearer ${token}`,
+>>>>>>> dev
 				},
 				body: formData,
 			});
+			console.log("response: ", response);
 
 			console.log("Image received");
 
@@ -85,25 +91,25 @@ export const LandingPage = () => {
 
 	return (
 		<div className="w-full relative h-[1847px] overflow-x-auto bg-[url('/frame-4@3x.png')] bg-cover bg-no-repeat bg-[top] text-left text-16xl text-border-alternate font-text-regular-normal">
-			<div className="absolute top-[29px] left-[1284px] rounded-26xl border-border-alternate border-[3px] border-solid flex flex-row items-center justify-center py-2 px-5">
+			{/* <div className="absolute top-[29px] left-[1284px] rounded-26xl border-border-alternate border-[3px] border-solid flex flex-row items-center justify-center py-2 px-5">
 				<button
 					className="[border:none] p-0 bg-[transparent] relative text-base leading-[150%] font-bold font-text-regular-normal text-border-alternate text-left inline-block"
 					disabled={true}
 				>
 					Sign Up
 				</button>
-			</div>
+			</div> */}
 			<div className="absolute top-[32px] left-[1140px] rounded-[32px] flex flex-row items-center justify-end gap-4">
 				<div className="border-color-neutral-black border-[1px] border-solid hidden flex-row items-center justify-center py-2 px-5">
 					<button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-base leading-[150%] font-roboto text-color-neutral-black text-left inline-block">
 						Learn
 					</button>
 				</div>
-				<div className="rounded-26xl border-border-alternate border-[3px] border-solid flex flex-row items-center justify-center py-2 px-5">
+				{/* <div className="rounded-26xl border-border-alternate border-[3px] border-solid flex flex-row items-center justify-center py-2 px-5">
 					<button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-base leading-[150%] font-bold font-text-regular-normal text-border-alternate text-left inline-block">
 						Login
 					</button>
-				</div>
+				</div> */}
 			</div>
 			<b className="absolute top-[123px] left-[81px] inline-block w-[1079px] h-[188px] text-51xl">
 				<p className="m-0">

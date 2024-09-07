@@ -5,6 +5,8 @@ import images from "../Models/ImageModel.js";
 import UserModel from "../Models/UserModel.js";
 import upload from "../config.js";
 import executeScript from "../execPyMod.js";
+import UserModel from "../Models/UserModel.js";
+
 import jwt from "jsonwebtoken";
 
 const upload_path = "input_images/";
@@ -14,10 +16,10 @@ export const updateDataBase = async (req, res) => {
     req.body.objId = null;
     if (file != undefined) {
         try {
+            const token = req.headers.auth.split(" ").pop();
+            const loggedInUser = jwt.verify(token, `${process.env.JWT_SECRET}`);
+            console.log("loggedin user:", loggedInUser);
 
-            const token = req.headers.authorization.split(" ").pop();
-            const inputUser = jwt.verify(token, `${process.env.JWT_SECRET}`);
-            console.log(inputUser.email);
 
 
             const newFile = new images({
@@ -35,12 +37,16 @@ export const updateDataBase = async (req, res) => {
                 .catch((err) => console.error(err));
             const path_img_input = path_file.path.split("\\")[1]
 
-            const user = await UserModel.findOneAndUpdate({ "email": inputUser.email }, {
-                $push: {
-                    listInputImg: { inputImgId: newFile._id }
+            await UserModel.findOneAndUpdate({ "email": loggedInUser.email }, {
+                "$push": {
+                    "inputImages": {
+                        "inImgId": newFile._id
+                    }
                 }
-            }).then((result) => console.log("User:", result)).catch((err) => console.log("error: ", err));
-
+            }).then((result) => {
+                console.log("user updated successfully");
+                return result;
+            }).catch((err) => console.error("error: user not updated successfully", err));
 
             req.body.objId = newFile._id.toString();
             return path_img_input;
@@ -92,5 +98,31 @@ const handleImages = async function (req, res) {
         }
     });
 };
+
+export const handleRecordImages = async (req, res) => {
+    try {
+        const token = req.headers.auth.split(" ").pop();
+        // console.log("token:", token);
+        const id = jwt.verify(token, `${process.env.JWT_SECRET}`);
+        // console.log("id: ", id);
+        const user = await UserModel.findById(id._id);
+        const imagePairs = await Promise.all(
+            user.inputImages.map(async (obj) => {
+                const imgId = obj.inImgId;
+                const [inputImagePath, time] = await images.findById(imgId).then((result) => {
+                    return [result.path, result.createdAt];
+                });
+                const inImg = fs.readFileSync(inputImagePath);
+                const outImg = fs.readFileSync(path.join("output_images", `generated_${inputImagePath.split("\\").pop()}`));
+                return [time, inImg, outImg];
+            })
+        );
+        // console.log(imagePairs);
+        return res.status(200).json({ "imagePairs": imagePairs });
+    } catch (error) {
+        console.error("Error handling record images:", error);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
+}
 
 export default handleImages;

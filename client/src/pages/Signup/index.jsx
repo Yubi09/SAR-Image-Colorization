@@ -5,8 +5,7 @@ import password_icon from "../../assets/password.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { handleError, handleSuccess } from "@/utils/toast";
-
+import { handleError, handleSuccess } from "../../utils/toast";
 export const LoginSignup = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [signupInfo, setSignupInfo] = useState({
