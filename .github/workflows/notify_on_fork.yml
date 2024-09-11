@@ -1,0 +1,13 @@
+name: Notify on Fork
+
+on:
+    fork:
+        types: [created]
+
+jobs:
+    send_email:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Send notification
+              run: |
+                  echo "A new fork has been created!" | mail -s "Fork Alert" youremail@example.com
