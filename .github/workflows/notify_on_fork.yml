@@ -10,4 +10,4 @@ jobs:
         steps:
             - name: Send notification
               run: |
-                  echo "A new fork has been created!" | mail -s "Fork Alert" youremail@example.com
+                  echo "A new fork has been created!" | mail -s "Fork Alert" arnabsantra248g@mail.com
