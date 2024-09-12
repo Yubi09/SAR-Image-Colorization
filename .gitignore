@@ -9,6 +9,7 @@ lerna-debug.log*
 
 server/node_modules/
 client/node_modules/
+client/build/
 server/web/
 *.pyc
 *.pth
