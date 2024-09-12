@@ -5,7 +5,7 @@
 	justify-content: flex-end;
 	align-items: center;
 	height: 100vh;
-	background-image: url("C:\Users\Dell\Desktop\login-signup\login-signup\src\Components\Assets\Background.jpeg");
+	background-image: url("../../assets/Background.jpeg");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
