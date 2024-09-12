@@ -15,7 +15,7 @@ import { LandingPage } from "./pages/landing/LandingPage";
 import { useState, useEffect } from "react";
 import RefreshHandler from "./components/RefreshHandler";
 import Dashboard from "./pages/Dashboard";
-
+import { Analytics } from "@vercel/analytics/react";
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -74,6 +74,7 @@ const App = () => {
 					element={<PrivateRoute element={<Dashboard />} />}
 				/>
 			</Routes>
+			<Analytics />
 		</div>
 	);
 };
