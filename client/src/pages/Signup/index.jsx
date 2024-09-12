@@ -81,7 +81,7 @@ export const LoginSignup = () => {
 					<div className="mb-[15px]">
 						<label
 							className="block xxsm:mb-[3px] lg:mb-[5px] xxsm:text-[9px] md:text-[12px] lg:text-[15px]"
-							htmlFor="name"
+							htmlFor="username"
 						>
 							Name
 						</label>
